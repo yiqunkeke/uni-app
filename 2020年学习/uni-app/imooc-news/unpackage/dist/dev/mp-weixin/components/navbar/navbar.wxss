@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+@font-face {
+	font-family: "iconfont";
+    src: url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAK8AAsAAAAABmAAAAJxAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcApsgQ4BNgIkAwgLBgAEIAWEbQcwG7QFyK6wcQ2kRLPDRhCgrrffd0RAYxBBtN9v9u7+R1yjVM+iiUyiQSMkEoRIapSGZy/hHa7pdcRCRg9KpEakWlYP7SX9PuczZmNqB2j83OwmHGBPoPAMyX9m2rYM5bWW1dTXBlxTP1Y+kDyguUQERSVHAg5sOqBuHI1sM5n4FtlF7A7iYwLNxg3z7U0v5qBDAasCcaUxBTpyIUUxso1CveZgEQ9qGtNdGrgX349/4eggqWVQd3g5VYXRrx6Ul3erXReMECYox2vIWAUKcVqb2tcsDG6z5lSLabCv6uCLCnOKvdqE8ddBZSsYleX3pCDKW61MoMSj08DGqItJTUPe3ufturi82/ng+Uvz+TNw9uZcmAS7ufwlT6WN9Tusv2eXfAWGImFf4zGXYpNrkVIpun4iS7gksZ6s2z8QWZ9kqWzDAaMA1Wc+TQSC28/1G6m//47uAj78SwSqzwL9PDTu2h38IkXPnuKrwJGKq6j1JNOjViY0a0YFqq/b21hz3/3kQqO+u/I0GEuRNZolC3MVNS3WUNdoE81WzBxv0YNrFqUJy44khE73SNo9Iev0TBbmK2r6vaOuM5rR7Dy4sMV8aF1zVARWibpGtIptUewSXVF1BtmSofCsSvAKyD0tSkL+YDE7gxbyObZ4yywsBCWU2yaZlp5Dw7CJw+06VoS/JoSTDgRo3Zv8FduELrs4pBBQFaFaQ2gqbBbKhgtdpc9nIGaJQcFbGnriBYjzaOMTIX7BHuSM3urVcC+veJYxYYJAERRnMxHT0jxkMNgIp35eHaoQ/GojEo60ABpE++r96xvNDygzWgBLCjQrq1+jwis1AA==') format('woff2')
+}
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-search:before {
+  content: "\e613";
+}
+.navbar .navbar-fixed {
+  width: 100%;
+  background-color: #f07373;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+.navbar .navbar-fixed .navbar-content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 45px;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+.navbar .navbar-fixed .navbar-content .navbar-search {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0 10px;
+  height: 30px;
+  background: #fff;
+  border-radius: 30px;
+}
+.navbar .navbar-fixed .navbar-content .navbar-search .navbar-search_icon {
+  margin-right: 10px;
+  color: #999;
+}
+.navbar .navbar-fixed .navbar-content .navbar-search .navbar-search_text {
+  font-size: 12px;
+  color: #999;
+}
+
