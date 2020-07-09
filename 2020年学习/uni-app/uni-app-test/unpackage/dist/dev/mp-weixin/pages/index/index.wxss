@@ -1,0 +1,17 @@
+
+.active {
+		color: red;
+}
+.height {
+		height: 200px;
+		border: 1px solid red;
+}
+	/* 没有 body，换成 page */
+	/* body {} */
+	/* 样式中条件编译 */
+
+
+
+
+
+
