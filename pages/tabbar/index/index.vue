@@ -1,8 +1,12 @@
 <template>
-	<view class="content">
+	<view class="home">
 		<!-- 自定义导航栏  -->
 		<navbar></navbar>
-		<tab :list="tabList"></tab>
+		<tab :list="tabList" @tab="tab"></tab>
+		<list-scroll>
+			<list-card v-for="item in 100"></list-card>
+		</list-scroll>
+		
 	</view>
 </template>
 
@@ -55,11 +59,29 @@
 				this.$api.get_list().then(res=> {
 					// console.log(res);
 				});
+			},
+			tab({data, index}) {
+				console.log({data, index});
 			}
 		}
 	}
 </script>
 
-<style>
-	
+<style lang="scss">
+	/*
+		flex:  flex-grow flex-shrink flex-basis
+		默认：     0           1         auto
+		
+		flex: none === 0  0  auto  不放大，不缩小
+		flex: auto === 1  1  auto  放大，缩小
+		flex: 1 === flex-grow: 1
+	*/
+	page {
+		height: 100%;
+		display: flex;
+	}
+	.home {
+		display: flex;
+		flex-direction: column;
+	}
 </style>
