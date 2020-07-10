@@ -23,6 +23,16 @@
 				default() {
 					return []
 				}
+			},
+			tabIndex: {
+				type: Number,
+				default: 0
+			}
+		},
+		watch: {
+			tabIndex(newVal, oldVal) {
+				// console.log(newVal, oldVal);
+				this.activeIndex = newVal;
 			}
 		},
 		data() {

@@ -2,13 +2,12 @@
 	<view class="home">
 		<!-- 自定义导航栏  -->
 		<navbar></navbar>
-		<tab :list="tabList" @tab="tab"></tab>
-		<list-scroll>
-			<list-card mode="base"></list-card>
-			<list-card mode="column"></list-card>
-			<list-card mode="image"></list-card>
-		</list-scroll>
-
+		<tab :list="tabList" :tabIndex="tabIndex" @tab="tab"></tab>
+		<list :tab="tabList" :activeIndex="activeIndex" @change="change">
+			<list-scroll>
+				<list-card :mode="item.mode" :item="item" v-for="(item, index) in list" :key="index"></list-card>
+			</list-scroll>
+		</list>
 	</view>
 </template>
 
@@ -24,12 +23,15 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello',
-				tabList: []
+				tabList: [],
+				tabIndex: 0,
+				activeIndex: 0,
+				list: []
 			}
 		},
 		onLoad() {
 			this.getLabel();
+			this.getList();
 		},
 		methods: {
 			getLabel() {
@@ -60,18 +62,23 @@
 					this.tabList = data;
 				})
 				// 获取list
-				this.$api.get_list().then(res => {
-					// console.log(res);
-				});
+				// this.$api.get_list().then(res => {
+				// 	// console.log(res);
+				// });
 			},
-			tab({
-				data,
-				index
-			}) {
-				console.log({
-					data,
-					index
-				});
+			tab({data,index}) {
+				this.activeIndex = index;
+			},
+			change(current) {
+				this.tabIndex = current;
+			},
+			getList() {
+				this.$api.get_list().then(res => {
+					// console.log('getList', res);
+					const { data } = res;
+					this.list = data;
+					console.log(this.list);
+				})
 			}
 		}
 	}

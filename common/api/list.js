@@ -20,13 +20,13 @@
 // }
 
 // 获取文章
-export const get_list = () => {
-	return new Promise((resolve, reject) => {
-		resolve({
-			data: '请求成功'
-		})
-	})
-}
+// export const get_list = () => {
+// 	return new Promise((resolve, reject) => {
+// 		resolve({
+// 			data: '请求成功'
+// 		})
+// 	})
+// }
 
 // 来看一下上面两段代码，可以看到，每次请求中依然需要写return new Promise 这样的代码----麻烦 
 // 所以我们可以把 return new Promise(...)统一处理，因为每个函数中的这段return new Promise(...)都是一样的
@@ -37,6 +37,13 @@ import $http from '../../utils/http.js';
 export const get_label = (data) => {
 	return $http({
 		url: 'get_label',
+		data
+	})
+}
+
+export const get_list = (data) => {
+	return $http({
+		url: 'get_list',
 		data
 	})
 }
