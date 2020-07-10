@@ -4,9 +4,11 @@
 		<navbar></navbar>
 		<tab :list="tabList" @tab="tab"></tab>
 		<list-scroll>
-			<list-card v-for="item in 100"></list-card>
+			<list-card mode="base"></list-card>
+			<list-card mode="column"></list-card>
+			<list-card mode="image"></list-card>
 		</list-scroll>
-		
+
 	</view>
 </template>
 
@@ -40,28 +42,36 @@
 				// 	this.tabList = result.data;
 				// 	// console.log(this.tabList);
 				// })
-				
+
 				// 封装数据请求:
 				// 1. 原因:在项目中,请求云函数或者接口非常多,如果每个数据请求都需要写上面一大串代码,非常不利于项目维护
 				// 所以需要对云函数或者网络请求做封装
 				// 2.并且,我们通常只需要关注成功的返回,则需要把失败的返回交给一个库统一去处理
 				// 我们需要一个统一的地方去维护所有的云函数,包括传参
 				// 最终可以通过 this.$api.get_label({}).then(res=>{})这种方式来请求数据-----直观
-				
+
 				// console.log(this.$api);
 				// 获取label
 				this.$api.get_label().then(res => {
 					// console.log(res);
-					const {data} = res;
+					const {
+						data
+					} = res;
 					this.tabList = data;
 				})
 				// 获取list
-				this.$api.get_list().then(res=> {
+				this.$api.get_list().then(res => {
 					// console.log(res);
 				});
 			},
-			tab({data, index}) {
-				console.log({data, index});
+			tab({
+				data,
+				index
+			}) {
+				console.log({
+					data,
+					index
+				});
 			}
 		}
 	}
@@ -80,8 +90,10 @@
 		height: 100%;
 		display: flex;
 	}
+
 	.home {
 		display: flex;
 		flex-direction: column;
+		width: 100%;
 	}
 </style>

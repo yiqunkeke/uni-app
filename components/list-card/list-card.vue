@@ -1,7 +1,53 @@
 <template>
 	<view>
 		<!-- 基础卡片 -->
-		<view class="listcard">
+		<view v-if="mode==='base'" class="listcard">
+			<view class="listcard-image">
+				<image src="/static/logo.png" mode="aspectFill"></image>
+			</view>
+			<view class="listcard-content">
+				<view class="listcard-content__title">
+					<text>uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架</text>
+				</view>
+				<view class="listcard-content__des">
+					<view class="listcard-content__des-label">
+						<view class="listcard-content__des-label-item">
+							前端
+						</view>
+					</view>
+					<view class="listcard-content__des-browse">
+						120人
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 多图模式 -->
+		<view v-if="mode==='column'" class="listcard mode-column">
+			<view class="listcard-content">
+				<view class="listcard-content__title">
+					<text>uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架uni-app开发框架</text>
+				</view>
+				<view class="listcard-image">
+					<view v-for="item in 3" :key="item" class="listcard-image__item">
+						<image src="/static/logo.png" mode="aspectFill"></image>
+					</view>
+				</view>
+				<view class="listcard-content__des">
+					<view class="listcard-content__des-label">
+						<view class="listcard-content__des-label-item">
+							前端
+						</view>
+					</view>
+					<view class="listcard-content__des-browse">
+						120人
+					</view>
+				</view>
+			</view>
+		</view>
+		
+		<!-- 大图模式 -->
+		<view v-if="mode==='image'" class="listcard mode-image">
 			<view class="listcard-image">
 				<image src="/static/logo.png" mode="aspectFill"></image>
 			</view>
@@ -26,6 +72,12 @@
 
 <script>
 	export default {
+		props: {
+			mode: {
+				type: String,
+				default: 'base'
+			}
+		},
 		data() {
 			return {
 				
@@ -90,6 +142,52 @@
 				.listcard-content__des-browse {
 					color: #999;
 					line-height: 1.5;
+				}
+			}
+		}
+		// &.mode-column表示与父元素同级
+		&.mode-column {
+			.listcard-content {
+				width: 100%;
+				padding-left: 0;
+			}
+			.listcard-image {
+				display: flex;
+				margin: 10px 0;
+				width: 100%;
+				height: 70px;
+				.listcard-image__item {
+					margin-left: 10px;
+					width: 100%;
+					border-radius: 5px;
+					overflow: hidden;
+					// &:first-child 表示父元素的第一个子元素
+					&:first-child {
+						margin-left: 0;
+					}
+					image {
+						width: 100%;
+						height: 100%;
+					}
+				}
+			}
+			.listcard-content__des {
+				margin-top: 10px;
+			}
+		}
+		&.mode-image {
+			flex-direction: column;
+			.listcard-image {
+				width: 100%;
+				height: 100px;
+			}
+			.listcard-content {
+				margin-top: 10px;
+				padding: 0;
+				.listcard-content__des {
+					display: flex;
+					align-items: center;
+					margin-top: 10px;
 				}
 			}
 		}
