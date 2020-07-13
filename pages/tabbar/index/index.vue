@@ -5,7 +5,7 @@
 		<tab :list="tabList" :tabIndex="tabIndex" @tab="tab"></tab>
 		<list :tab="tabList" :activeIndex="activeIndex" @change="change">
 			<list-scroll>
-				<list-card :mode="item.mode" :item="item" v-for="(item, index) in list" :key="index"></list-card>
+				<list-card :item="item" v-for="(item, index) in list" :key="index"></list-card>
 			</list-scroll>
 		</list>
 	</view>
@@ -31,7 +31,7 @@
 		},
 		onLoad() {
 			this.getLabel();
-			this.getList();
+			this.getList('全部');
 		},
 		methods: {
 			getLabel() {
@@ -59,6 +59,9 @@
 					const {
 						data
 					} = res;
+					data.unshift({
+						name: '全部'
+					});
 					this.tabList = data;
 				})
 				// 获取list
@@ -71,10 +74,12 @@
 			},
 			change(current) {
 				this.tabIndex = current;
+				this.getList(this.tabList[current].name);
 			},
-			getList() {
-				this.$api.get_list().then(res => {
-					// console.log('getList', res);
+			getList(name) {
+				this.$api.get_list({
+					name
+				}).then(res => {
 					const { data } = res;
 					this.list = data;
 					console.log(this.list);
