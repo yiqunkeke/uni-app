@@ -11,7 +11,7 @@ exports.main = async (event, context) => {
   // .get();
   
   // 接收分类，通过分类去筛选数据
-  const { name } = event;
+  const { name, page=1, pageSize=10 } = event;
   // 聚合：更精细化的去处理数据  求和，分组,指定返回哪些字段
   let matchObj = {};
   if(name !== '全部') {
@@ -26,6 +26,9 @@ exports.main = async (event, context) => {
   .project({
   	  content: false
   })
+  // 要跳过多少数据
+  .skip(pageSize*(page-1))
+  .limit(pageSize)
   .end()
   
   //返回数据给客户端

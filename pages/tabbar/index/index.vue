@@ -4,8 +4,9 @@
 		<navbar></navbar>
 		<tab :list="tabList" :tabIndex="tabIndex" @tab="tab"></tab>
 		<list :tab="tabList" :activeIndex="activeIndex" @change="change">
-			<list-scroll>
+			<list-scroll @loadmore="loadmore">
 				<list-card :item="item" v-for="(item, index) in list" :key="index"></list-card>
+				<uni-load-more status="noMore" iconType="snow"></uni-load-more>
 			</list-scroll>
 		</list>
 	</view>
@@ -26,7 +27,9 @@
 				tabList: [],
 				tabIndex: 0,
 				activeIndex: 0,
-				list: []
+				list: [],
+				page: 1,
+				pageSize: 5
 			}
 		},
 		onLoad() {
@@ -74,16 +77,25 @@
 			},
 			change(current) {
 				this.tabIndex = current;
+				// TODO 数据缓存
 				this.getList(this.tabList[current].name);
 			},
 			getList(name) {
 				this.$api.get_list({
-					name
+					name,
+					page: this.page,
+					pageSize: this.pageSize
 				}).then(res => {
 					const { data } = res;
-					this.list = data;
-					console.log(this.list);
+					console.log(data);
+					let oldList = this.list;
+					this.list = oldList.concat(data);
 				})
+			},
+			loadmore() {
+				console.log('上拉事件')
+				this.page++;
+				this.getList(this.tabList[this.activeIndex].name);
 			}
 		}
 	}
